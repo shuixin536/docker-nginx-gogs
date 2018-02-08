@@ -1,7 +1,7 @@
 # docker-nginx-gogs
 
 ```
-docker run -d -p 10030:3000 -p 443:443 -v /Users/zyx/Documents/tempgit/gogs/docker-nginx-gogs:/data -v /Users/zyx/Documents/tempgit/gogs/docker-nginx-gogs/etc/nginx/nginx.conf:/etc/nginx/nginx.conf shuixin536/docker-nginx-gogs:public
+docker run -d -p 10030:3000 -p 10443:443 -v /Users/zyx/Documents/tempgit/gogs/docker-nginx-gogs:/data -v /Users/zyx/Documents/tempgit/gogs/docker-nginx-gogs/etc/nginx/nginx.conf:/etc/nginx/nginx.conf shuixin536/docker-nginx-gogs:public
 ```
 
 需要宿主机访问可以使用添加参数-p 10030:3000 -p 10022:22 -p 10080:80 -p 10443:443 
@@ -72,3 +72,18 @@ http {
     }
 }
 ```
+
+
+安装完成以后在浏览器打开
+https://github.example.win:443
+这里的端口看实际情况域名跳转了
+
+第一次打开时候会自动跳转到
+https://github.example.win:443/install
+数据库类型选择为sqlite3
+数据库路径存储为/data/gogs.db，这个是用来存储后续注册用户信息的；放置在/data目录，在宿主机中也可以访问
+仓库根目录修改为/data/gogs-repositories，也方便宿主机备份
+运行系统用户，保持不修改，但是在点击保存时候会报错，提示正确的系统用户，修改为提示用户即可
+应用 URL修改为https://github.example.win:4443即可
+
+管理员帐号设置---默认新建的第一个用户就是管理员；也可以在这里创建一个

@@ -6,7 +6,7 @@ ENV GOGS_VERSION 0.11.29
 # UBUNTU BASIC SETUP AND GOGS
 RUN apt-get update && \
     set -x && \
-    apt-get install -y git wget openssh-server tzdata && \
+    apt-get install -y git wget openssh-server tzdata vim && \
     groupadd git && useradd -d /home/git -m -g git git && \
     cd /tmp && \
     wget --no-check-certificate https://github.com/gogits/gogs/releases/download/v${GOGS_VERSION}/linux_amd64.tar.gz -O gogs.tar.gz && \
@@ -38,6 +38,6 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 WORKDIR /home/git/gogs
 VOLUME ["/app"]
 
-EXPOSE 22 3000
+EXPOSE 22 3000 443
 
 CMD ["run.sh"]
