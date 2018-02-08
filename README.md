@@ -22,7 +22,9 @@ https 443
 -v /Users/zyx/Documents/tempgit/gogs/docker-nginx-gogs/etc/nginx/nginx.conf:/etc/nginx/nginx.conf
 ```
 
-nginx.conf 的样例
+nginx.conf 的样例，修改
+1. https证书：/data/cert/github.example.win.pem
+2. 域名：github.example.win
 ```
 #user  nobody;
 worker_processes  4;
