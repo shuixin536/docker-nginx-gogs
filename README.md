@@ -1,11 +1,28 @@
 # docker-nginx-gogs
 
-
+```
 docker run -d -p 10030:3000 -p 443:443 -v /Users/zyx/Documents/tempgit/gogs/docker-nginx-gogs:/data -v /Users/zyx/Documents/tempgit/gogs/docker-nginx-gogs/etc/nginx/nginx.conf:/etc/nginx/nginx.conf shuixin536/docker-nginx-gogs:public
-
+```
 
 需要宿主机访问可以使用添加参数-p 10030:3000 -p 10022:22 -p 10080:80 -p 10443:443 
 
+docker内部对外端口
+ssh 22
+gogs 3000
+https 443
+
+外部需要配置的东西，该git server只支持https
+1. https证书，目录根据volume映射，保证路径所在目录/data/cert/github.example.win.pem
+```
+-v /Users/zyx/Documents/tempgit/gogs/docker-nginx-gogs:/data
+```
+
+2. 需要映射volume的nginx
+```
+-v /Users/zyx/Documents/tempgit/gogs/docker-nginx-gogs/etc/nginx/nginx.conf:/etc/nginx/nginx.conf
+```
+
+nginx.conf 的样例
 ```
 #user  nobody;
 worker_processes  4;
