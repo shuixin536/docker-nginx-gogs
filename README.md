@@ -6,7 +6,7 @@ docker run -d -p 10030:3000 -p 443:443 -v /Users/zyx/Documents/tempgit/gogs/dock
 
 需要宿主机访问可以使用添加参数-p 10030:3000 -p 10022:22 -p 10080:80 -p 10443:443 
 
-
+```
 #user  nobody;
 worker_processes  4;
 events {
@@ -52,4 +52,4 @@ http {
         }
     }
 }
-
+```
